@@ -1,0 +1,32 @@
+.hidden {
+    display: none !important;
+}
+
+.gift-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.gift-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Smooth transitions between sections */
+section {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#birthdayVideo {
+    object-fit: cover;
+    transform: rotate(0deg); /* Adjust if needed */
+}

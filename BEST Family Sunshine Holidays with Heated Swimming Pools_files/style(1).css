@@ -1,0 +1,35 @@
+ /*
+Theme Name: Travelify Child
+Theme URI: http://www.bestchildfriendlyholidays.co.uk/travelify-child/
+Author: Dan Affleck
+Author URI: http://www.bestchildfriendlyholidays.co.uk/
+Description: Travelify child theme
+Version: 1.0
+Template: travelify
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: white, light, green , custom-background, custom-header, custom-menu, fluid-layout, featured-images, full-width-template, left-sidebar, right-sidebar, one-column, two-columns, three-columns, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, photoblogging, holiday
+Text Domain: travelify-child
+ */
+
+h1.search-title {
+   padding: 5px;
+}
+/*.mobile-main{visibility:hidden;display:none;}*/
+@media only screen and (max-width: 767px) {
+	#secondary {
+    float: left;
+  margin-left: 0!important;
+    width: 100%!important;
+}
+	#postcolumn {
+    width: 100%!important;
+    margin: 0!important;
+}
+	.gridlist, .offerslist {
+    margin: 0 auto!important;
+    text-align: center;
+}
+	.mobile-main{visibility:visible;display:block;}
+	img.alignleft, img.alignright, img.aligncenter{margin:0 auto!important;}
+}

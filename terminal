@@ -1,0 +1,23 @@
+mkdir birthday-app
+cd birthday-app
+mkdir assets
+mkdir -p assets/videos assets/images/hotels
+touch index.html
+touch app.js
+touch styles.css
+touch assets/videos/birthday-video.mov
+touch assets/videos/centerparcs.mp4
+touch assets/videos/mediterraneo.mp4
+touch assets/videos/myramar.mp4
+touch assets/videos/holiday-village.mp4
+touch assets/images/centerparcs.jpg
+touch assets/images/sunny-resort.jpg
+touch assets/images/hotels/mediterraneo-main.jpg
+touch assets/images/hotels/mediterraneo-1.jpg
+touch assets/images/hotels/mediterraneo-2.jpg
+touch assets/images/hotels/myramar-main.jpg
+touch assets/images/hotels/myramar-1.jpg
+touch assets/images/hotels/myramar-2.jpg
+touch assets/images/hotels/holiday-village-main.jpg
+touch assets/images/hotels/holiday-village-1.jpg
+touch assets/images/hotels/holiday-village-2.jpg 

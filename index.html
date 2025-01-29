@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Leanne!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body class="min-h-screen relative overflow-hidden">
+    <!-- Background Image Grid -->
+<div id="background-montage" class="absolute inset-0 w-full h-full overflow-hidden z-[-1]"></div>
+
+    <!-- Main Content -->
+    <div class="relative z-10">
+    <!-- Landing Page -->
+    <section id="landing" class="min-h-screen flex flex-col items-center justify-center p-4">
+        <h1 class="text-4xl md:text-6xl font-bold text-blue-600 mb-8 text-center">
+            Happy Birthday Leanne! 🎉
+        </h1>
+        <div class="w-full max-w-2xl aspect-video bg-gray-100 rounded-lg shadow-lg mb-8">
+            <video id="birthdayVideo" class="w-full h-full rounded-lg" controls autoplay>
+                <source src="assets/videos/birthday-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <button onclick="showSection('gifts')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transform transition hover:scale-105">
+            View Your Gift Options 🎁
+        </button>
+    </section>
+
+    <!-- Gift Options -->
+    <section id="gifts" class="min-h-screen flex flex-col items-center justify-center p-4 hidden"" >
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8 text-center">Choose Your Perfect Gift</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
+            <div onclick="selectGift('centerparcs')" class="gift-card cursor-pointer bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                <img src="assets/images/centerparcs.jpg" alt="Center Parcs" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">A Week in Center Parcs</h3>
+            </div>
+            <div onclick="selectGift('sun')" class="gift-card cursor-pointer bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+                <img src="assets/images/sunny-resort.jpg" alt="Sunny Resort" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">A Week in the Sun</h3>
+                <p class="text-gray-600">Click on me to see the options</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Options -->
+<section id="hotels" class="h-screen flex flex-col items-center justify-center p-4 overflow-y-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8 text-center">Choose Your Hotel</h2>
+        
+        <div id="hotels-container" class="space-y-8 max-w-6xl w-full">
+             <div hx-get="hotels.html" hx-trigger="load"></div>
+            <div id="debug-message">If you see this, the container exists</div>
+            <!-- Hotel cards will be added dynamically -->
+        </div>
+    </section>
+
+    <!-- Date Selection -->
+<section id="dates" class="h-screen flex flex-col items-center justify-center p-4 overflow-y-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8 text-center">When Would You Like to Go?</h2>
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
+            <div class="space-y-4">
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="radio" name="date" value="april14" class="form-radio h-5 w-5 text-blue-600">
+                    <span class="text-lg">April 14th</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="radio" name="date" value="april21" class="form-radio h-5 w-5 text-blue-600">
+                    <span class="text-lg">April 21st</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="radio" name="date" value="june" class="form-radio h-5 w-5 text-blue-600">
+                    <span class="text-lg">June</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="radio" name="date" value="july" class="form-radio h-5 w-5 text-blue-600">
+                    <span class="text-lg">July</span>
+                </label>
+            </div>
+            <button onclick="nextStep('dates')" class="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full">
+                Continue →
+            </button>
+        </div>
+    </section>
+
+    <!-- Group Size -->
+<section id="group" class="h-screen flex flex-col items-center justify-center p-4 overflow-y-auto pb-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-8 text-center">Who's Coming Along?</h2>
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-md w-full">
+            <div class="space-y-4">
+                <label class="flex items-center space-x-3 p-4 border rounded-lg bg-gray-50">
+                    <input type="checkbox" name="attendees" value="leanne" class="form-checkbox h-5 w-5 text-blue-600" checked disabled>
+                    <span class="text-lg">Leanne</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg bg-gray-50">
+                    <input type="checkbox" name="attendees" value="ray" class="form-checkbox h-5 w-5 text-blue-600" checked disabled>
+                    <span class="text-lg">Ray</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="kai" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Kai</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="dee" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Dee</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="nanny" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Nanny</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="mina" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Mina</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="ella" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Ella</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="graham" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Graham</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="elaine" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Elaine</span>
+                </label>
+                <label class="flex items-center space-x-3 p-4 border rounded-lg cursor-pointer hover:bg-gray-50">
+                    <input type="checkbox" name="attendees" value="fay" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="text-lg">Fay</span>
+                </label>
+            </div>
+            <button onclick="nextStep('group')" class="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full">
+                See Your Gift! 🎉
+            </button>
+        </div>
+    </section>
+
+    <!-- Confirmation -->
+<section id="confirmation" class="h-screen flex flex-col items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-2xl w-full text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">Your Birthday Gift is Confirmed! 🎉</h2>
+            <div class="mb-8">
+        <div class="w-full max-w-4xl aspect-video bg-gray-100 rounded-lg shadow-lg mb-8">
+            <iframe 
+                id="birthdayVideo2"
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/A6i96T1NTn4?autoplay=1&mute=1"
+                title="LEANNE Happy Birthday Song"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+        </div>
+            </div>
+            <div id="giftSummary" class="text-lg text-gray-700 space-y-2 mb-8">
+                <!-- Summary will be populated by JavaScript -->
+            </div>
+            <button onclick="restart()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full">
+                Start Over
+            </button>
+        </div>
+    </section>
+    <script src="app.js"></script>
+</body>
+</html> 
